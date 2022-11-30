@@ -1,10 +1,11 @@
+require("dotenv").config();
+
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
 const cors = require("cors");
-require("dotenv/config");
 const authJwt = require("./helpers/jwt");
 const errorHandler = require("./helpers/error-handler");
 
@@ -39,9 +40,11 @@ mongoose
     dbName: "mark-shop",
   })
   .then(() => {
+    console.log(process.env.CONNECTION_STRING);
     console.log("Database Connection is ready...");
   })
   .catch((err) => {
+    console.log(process.env.CONNECTION_STRING);
     console.log(err);
   });
 
